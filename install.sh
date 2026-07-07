@@ -5,6 +5,7 @@ sudo pacman -Syu --needed --noconfirm \
   xorg-server \
   xorg-xinit \
   i3-wm \
+  i3status \
   dmenu \
   alacritty \
   mesa \
