@@ -6,11 +6,25 @@ sudo pacman -Syu --needed --noconfirm \
   xorg-xinit \
   i3-wm \
   dmenu \
-  alacritty
+  alacritty \
+  mesa \
+  qemu-guest-agent \
+  spice-vdagent \
+  xclip
 
 cat > "$HOME/.xinitrc" <<'EOF'
+#!/bin/sh
+
+spice-vdagent &
 exec i3
 EOF
 
-echo "Installation complete. You can start i3 with:"
-echo "startx"
+cat > "$HOME/.bash_profile" <<'EOF'
+if [ -z "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
+    exec startx
+fi
+EOF
+
+echo "Installation complete."
+echo
+echo "Log out and log back in on tty1 to start i3 automatically."
