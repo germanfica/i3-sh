@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-sudo pacman -Syu --needed \
+sudo pacman -Syu --needed --noconfirm \
   xorg-server \
   xorg-xinit \
   i3-wm \
